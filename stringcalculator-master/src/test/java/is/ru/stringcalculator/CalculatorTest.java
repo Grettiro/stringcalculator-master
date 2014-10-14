@@ -38,7 +38,11 @@ public class CalculatorTest {
     public void testDelimiter(){
     	assertEquals(3, Calculator.add("//;\n1;2"));
     }
-    
+
+    @Test
+    public void testDelimiter2(){
+    	assertEquals(3, Calculator.add("//e\n1e2"));
+    }
 
     
 
