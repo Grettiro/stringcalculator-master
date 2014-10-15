@@ -38,13 +38,20 @@ public class Calculator {
 		return total;
     }
     private static void isNegative(String[] numbers) {
+			String negNumbers = "";
+			boolean test = true;
 			for(String number : numbers)
 			{
         		if(Integer.parseInt(number) < 0)
         		{
-        			throw new IllegalArgumentException("Negatives not allowed: " + number);
+        			test = false;
+        			negNumbers = negNumbers + number;
         		}
 			}
+			if(test == false)
+			{
+				throw new IllegalArgumentException("Negatives not allowed: " + negNumbers);
+    		}
     }
 
 

@@ -61,4 +61,17 @@ public class CalculatorTest {
 			assertThat(e.getMessage(), containsString("Negatives not allowed: -1"));
 		}
 	}
+
+	@Test
+	public void testNegative2(){
+		try
+		{
+    		Calculator.add("2,-4,3,-5");
+    		fail("Should have thrown Negative yo");
+		}
+		catch(Exception e)
+		{
+			assertThat(e.getMessage(), containsString("Negatives not allowed: -4-5"));
+		}
+	}
 }
