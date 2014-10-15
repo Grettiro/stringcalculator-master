@@ -33,7 +33,10 @@ public class Calculator {
  	    int total = 0;
  	    isNegative(numbers);
         for(String number : numbers){
-        		total += toInt(number);
+        		if(toInt(number) < 1001)
+        		{
+        			total += toInt(number);
+        		}		
 		}
 		return total;
     }

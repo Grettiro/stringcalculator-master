@@ -74,4 +74,9 @@ public class CalculatorTest {
 			assertThat(e.getMessage(), containsString("Negatives not allowed: -4-5"));
 		}
 	}
+
+	@Test
+	public void testTooLarge(){
+		assertEquals(2, Calculator.add("1001,2"));
+	}
 }
