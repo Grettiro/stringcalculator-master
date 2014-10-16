@@ -1,5 +1,8 @@
 package is.ru.stringcalculator;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Calculator {
 
 	public static int add(String text) {
@@ -8,7 +11,22 @@ public class Calculator {
 		}
 		else if (text.contains("//"))
 		{
-			return sum(splitNumbers2((text.substring(3).replaceAll("\\n", "")), text.substring(2,3)));
+			Pattern pattern = Pattern.compile("//(.+)\\n(.*)");
+			Matcher matcher = pattern.matcher(text);
+			if(matcher.matches())
+			{
+				String delim = matcher.group(1);
+				String digits = matcher.group(2);
+				System.out.println("Delims: " + delim);
+				System.out.println("DIgits: " + digits);
+				delim = delim.replaceAll("\\[", "").replaceAll("\\]","");
+				return sum(splitNumbers2(digits, Pattern.quote(delim)));
+			}
+			else
+			{
+				return 0;
+			}
+			//return sum(splitNumbers2((text.substring(3).replaceAll("\\n", "")), text.substring(2,3)));
 		}
 		else if(text.contains(",") || text.contains("\n")){
 			return sum(splitNumbers(text));
@@ -26,6 +44,8 @@ public class Calculator {
 	}
 
 	private static String[] splitNumbers2(String numbers, String delimiter){
+			System.out.println("The delimiter: " + delimiter);
+
 			return numbers.split(delimiter);
 	}
       
