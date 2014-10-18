@@ -41,21 +41,27 @@ public class Calculator {
 	}
 
 	private static String[] splitNumbers2(String numbers, String delimiter){
-
-		Pattern pattern2 = Pattern.compile("\\" + delimiter.charAt(1) + "{3,}?");
-		Matcher matcher2 = pattern2.matcher(delimiter);
-		if(matcher2.matches())
-		{
-			System.out.println("Durp it matched");
-			return numbers.split(pattern2.quote(delimiter));
+		if(delimiter.length() > 1)
+		{		
+			Pattern pattern2 = Pattern.compile("\\" + delimiter.charAt(1) + "{3,}?");
+			Matcher matcher2 = pattern2.matcher(delimiter);
+			if(matcher2.matches())
+			{
+				System.out.println("Durp it matched");
+				return numbers.split(pattern2.quote(delimiter));
+			}
+			else
+			{
+				delimiter = pattern2.quote(delimiter);
+				String delimiter2 = "[";
+				delimiter2 = delimiter2 + delimiter + "]";
+				System.out.println("The delimiter:" + delimiter2);
+				return numbers.split(delimiter2);
+			}
 		}
 		else
 		{
-			delimiter = pattern2.quote(delimiter);
-			String delimiter2 = "[";
-			delimiter2 = delimiter2 + delimiter + "]";
-			System.out.println("The delimiter:" + delimiter2);
-			return numbers.split(delimiter2);
+			return numbers.split(delimiter);
 		}
 		
 	}
