@@ -17,9 +17,7 @@ public class Calculator {
 			{
 				String delim = matcher.group(1);
 				String digits = matcher.group(2);
-				System.out.println("Delimiter before replace: " + delim);
 				delim = delim.replaceAll("\\[", "").replaceAll("\\]","");
-				//return sum(splitNumbers2(digits, Pattern.quote(delim)));
 				return sum(splitNumbers2(digits, delim));
 			}
 			else
@@ -55,7 +53,6 @@ public class Calculator {
 				delimiter = pattern2.quote(delimiter);
 				String delimiter2 = "[";
 				delimiter2 = delimiter2 + delimiter + "]";
-				System.out.println("The delimiter:" + delimiter2);
 				return numbers.split(delimiter2);
 			}
 		}
